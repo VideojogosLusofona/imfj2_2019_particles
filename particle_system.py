@@ -5,7 +5,7 @@ from vector2 import *
 from color import *
 
 # Useful constants
-gravityAccelation = vector2(0, 9.8)
+gravityAccelation = vector2(0, 9.8 * 10)
 
 # Individual particle class
 # It has a startPosition, a startVelocity, and keeps tracks of the lifetime of the particle
@@ -61,7 +61,7 @@ class ParticleSystem:
             # Set previous position to the current position
             p.prevPos = p.currentPos
             # Update the current position
-            p.currentPos = p.currentPos # Here is where we have to place the calculation for the particle system
+            p.currentPos = self.position + p.startVelocity * p.time + gravityAccelation * (p.time ** 2) * 0.5
 
         # Remove all particles that have exceeded their life time
         self.particles = list(filter(lambda p: p.time < self.particleLifetime, self.particles))
@@ -90,6 +90,8 @@ def main():
     # Create a particle system
     ps = ParticleSystem(vector2(320, 240), color(1,0,0,1))
     ps.rate = 120
+    ps.startSpeed = (30, 50)
+    ps.particleLife = 4
 
     # Game loop, runs forever
     while (True):
