@@ -36,6 +36,12 @@ class vector2:
         else:
             raise(InvalidOperationExceptionVec2("mult", type(self), type(v)))
 
+    def __rmul__(self, v):
+        if (isinstance(v, (int, float))):
+            return vector2(self.x * v, self.y * v)
+        else:
+            raise(InvalidOperationExceptionVec2("mult", type(self), type(v)))
+
     def __truediv__(self, v):
         if (isinstance(v, (int, float))):
             return vector2(self.x / v, self.y / v)
