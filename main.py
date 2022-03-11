@@ -5,7 +5,7 @@ from vector2 import *
 from color import *
 
 # Useful constants
-gravityAccelation = vector2(0, 9.8)
+gravityAcceleration = vector2(0, 9.8)
 
 # Individual particle class
 # It has a startPosition, a startVelocity, and keeps tracks of the lifetime of the particle
